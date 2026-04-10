@@ -1,0 +1,11 @@
+# 临时脚本
+test_logic.js
+test_full.js
+add_tagline.js
+add_rarity.js
+generate_images.js
+
+# 系统文件
+.DS_Store
+Thumbs.db
+node_modules/

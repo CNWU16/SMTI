@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMTI 人格测试</title>
+  <meta name="description" content="MBTI已经过时，SMTI来了。一个有点不正经的人格测试。">
+  <meta name="keywords" content="SMTI,人格测试,SM,MBTI,性格测试,娱乐测试">
+  <meta property="og:title" content="SMTI 人格测试">
+  <meta property="og:description" content="MBTI已经过时，SMTI来了。来看看你是什么类型？">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== 首页 ========== -->
+  <section id="page-landing" class="page active">
+    <div class="card landing-card">
+      <h1 class="landing-title">MBTI已经过时，<span class="highlight">SMTI</span>来了。</h1>
+      <p class="landing-subtitle">一个有点不正经的人格测试</p>
+      <button id="btn-start" class="btn btn-primary" onclick="startQuiz()">
+        开始测试
+      </button>
+      <div class="landing-footer">
+        <p>本测试仅供娱乐，请勿当真。</p>
+        <p>托管：Cloudflare (免费) ｜ 域名：待定</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 答题页 ========== -->
+  <section id="page-quiz" class="page">
+    <!-- 固定进度条 -->
+    <div class="progress-bar-container">
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+      <span id="progress-text" class="progress-text">0 / 31</span>
+    </div>
+
+    <!-- 题目容器 -->
+    <div id="quiz-container" class="quiz-container">
+      <!-- 题目卡片由 JS 动态生成 -->
+    </div>
+
+    <!-- 底部操作 -->
+    <div class="quiz-footer">
+      <span id="quiz-footer-hint" class="quiz-footer-hint">请完成所有题目后提交</span>
+      <div class="quiz-footer-buttons">
+        <button class="btn btn-secondary" onclick="goHome()">返回首页</button>
+        <button id="btn-submit" class="btn btn-primary" disabled onclick="submitQuiz()">
+          提交并查看结果
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 结果页 ========== -->
+  <section id="page-result" class="page">
+    <div class="card result-card">
+      <!-- 人格图片 -->
+      <div id="result-image-container" class="result-image-container">
+        <img id="result-image" src="" alt="人格图片" class="result-image">
+      </div>
+
+      <!-- 人格标题 -->
+      <div class="result-header">
+        <h1 id="result-code" class="result-code">????</h1>
+        <h2 id="result-name" class="result-name">未知人格</h2>
+        <p id="result-subtitle" class="result-subtitle"></p>
+        <div id="result-rarity" class="result-rarity">
+          <span class="rarity-congrats">🎊 恭喜解锁稀有人格</span>
+          <span class="rarity-value">仅有 <strong id="rarity-percent">?%</strong> 的测试者属于该类型</span>
+        </div>
+        <div class="result-match">
+          匹配度：<span id="result-match-value" class="result-match-value">0%</span>
+        </div>
+      </div>
+
+      <!-- 人格解读 -->
+      <div class="result-section">
+        <h3>该人格的简单解读</h3>
+        <div id="result-description" class="result-description"></div>
+      </div>
+
+      <!-- 15维度评分 -->
+      <div class="result-section">
+        <h3>十五维度评分</h3>
+        <div id="result-dimensions" class="result-dimensions">
+          <!-- 维度评分由 JS 动态生成 -->
+        </div>
+      </div>
+
+      <!-- 友情提示 -->
+      <div class="result-section result-disclaimer">
+        <h3>友情提示</h3>
+        <p>本测试仅供娱乐，别拿它当诊断、面试、相亲、分手、招魂、算命或人生判决书。</p>
+        <p>请以轻松的心态对待结果，如有冒犯非常抱歉！</p>
+      </div>
+
+      <!-- 操作按钮 -->
+      <div class="result-actions">
+        <button class="btn btn-secondary" onclick="goHome()">回到首页</button>
+        <button class="btn btn-primary" onclick="retakeQuiz()">重新测试</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 弹窗广告 ========== -->
+  <div id="ad-overlay" class="ad-overlay hidden">
+    <div class="ad-modal">
+      <button class="ad-close" onclick="closeAd()">&times;</button>
+      <div class="ad-content">
+        <p class="ad-label">广告</p>
+        <!-- 广告内容区域 - 后续接入 AdSense -->
+        <div id="ad-slot" class="ad-slot">
+          <p>广告位</p>
+          <p class="ad-placeholder-text">此处将展示广告内容</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS 模块 -->
+  <script src="js/data/questions.js"></script>
+  <script src="js/data/dimensions.js"></script>
+  <script src="js/data/p_dom.js"></script>
+  <script src="js/data/p_switch.js"></script>
+  <script src="js/data/p_sub.js"></script>
+  <script src="js/data/personalities.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/result.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

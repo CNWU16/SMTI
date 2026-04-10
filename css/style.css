@@ -1,0 +1,750 @@
+/* ============================================
+   SMTI 人格测试 — 全局样式 v2
+   风格：克制、严肃、深灰+酒红点缀（正经反差感）
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* 主色调 - 酒红点缀 */
+  --color-primary: #8B1A2B;
+  --color-primary-dark: #5C0E1B;
+  --color-primary-light: #B8344A;
+
+  /* 背景 - 更克制的深灰 */
+  --bg-body: #141416;
+  --bg-surface: #1c1c20;
+  --bg-elevated: #232328;
+
+  /* 卡片 */
+  --card-bg: #1c1c20;
+  --card-border: #2a2a30;
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+
+  /* 文字 - 更中性 */
+  --text-primary: #e8e6e3;
+  --text-secondary: #9e9a95;
+  --text-muted: #5e5b56;
+  --text-accent: #c9475b;
+
+  /* 选项 */
+  --option-bg: #1f1f24;
+  --option-border: #2a2a30;
+  --option-hover-bg: #26232a;
+  --option-hover-border: #3a3540;
+  --option-selected-bg: rgba(139, 26, 43, 0.12);
+  --option-selected-border: var(--color-primary);
+
+  /* 进度条 */
+  --progress-bg: #2a2a30;
+  --progress-fill: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+
+  /* 按钮 */
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-hover: var(--color-primary-light);
+
+  /* 维度评分 */
+  --dim-low: #5e5b56;
+  --dim-mid: #b8923e;
+  --dim-high: #c9475b;
+
+  /* 动画 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* 尺寸 */
+  --content-max-width: 680px;
+  --card-radius: 4px;
+  --card-padding: 32px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Page System ---------- */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 48px 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  max-width: var(--content-max-width);
+  width: 100%;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 11px 28px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--btn-primary-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+}
+
+.btn-secondary:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+/* ========================================
+   首页 Landing
+   ======================================== */
+#page-landing {
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.landing-card {
+  text-align: center;
+  padding: 72px 48px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  max-width: 800px;
+}
+
+.landing-title {
+  font-family: 'Playfair Display', 'Noto Sans SC', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+}
+
+.landing-title .highlight {
+  color: var(--text-accent);
+}
+
+.landing-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+#btn-start {
+  font-size: 14px;
+  padding: 14px 56px;
+  letter-spacing: 2px;
+}
+
+.landing-footer {
+  margin-top: 56px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ========================================
+   答题页 Quiz
+   ======================================== */
+
+/* --- 进度条 --- */
+.progress-bar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  max-width: var(--content-max-width);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  background: linear-gradient(180deg, var(--bg-body) 0%, var(--bg-body) 70%, transparent 100%);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 3px;
+  background: var(--progress-bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--progress-fill);
+  border-radius: 2px;
+  transition: width var(--transition-normal);
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  min-width: 48px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- 题目容器 --- */
+.quiz-container {
+  max-width: var(--content-max-width);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 24px;
+}
+
+/* --- 题目卡片 --- */
+.question-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 24px 28px;
+  transition: border-color var(--transition-normal);
+}
+
+.question-card:hover {
+  border-color: #3a3a42;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.question-number {
+  display: inline-block;
+  background: var(--bg-elevated);
+  color: var(--text-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.question-dimension {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.question-text {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+/* --- 选项 --- */
+.options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  background: var(--option-bg);
+  border: 1px solid var(--option-border);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.option-item:hover {
+  background: var(--option-hover-bg);
+  border-color: var(--option-hover-border);
+}
+
+.option-item.selected {
+  background: var(--option-selected-bg);
+  border-color: var(--option-selected-border);
+}
+
+.option-radio {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.option-item.selected .option-radio {
+  border-color: var(--color-primary-light);
+}
+
+.option-item.selected .option-radio::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+}
+
+.option-label {
+  font-weight: 600;
+  color: var(--text-accent);
+  flex-shrink: 0;
+  min-width: 16px;
+  font-size: 0.85rem;
+}
+
+.option-text {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* --- 底部操作 --- */
+.quiz-footer {
+  max-width: var(--content-max-width);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.quiz-footer-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.quiz-footer-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* ========================================
+   结果页 Result
+   ======================================== */
+.result-card {
+  padding: 48px 40px;
+  max-width: 720px;
+}
+
+/* --- 人格图片 --- */
+.result-image-container {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.result-image {
+  max-width: 480px;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+}
+
+/* --- 人格标题区 --- */
+.result-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.result-code {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--text-accent);
+  letter-spacing: 8px;
+  margin-bottom: 4px;
+}
+
+.result-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.result-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.result-rarity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 20px;
+  padding: 14px 24px;
+  background: rgba(139, 26, 43, 0.08);
+  border: 1px solid rgba(139, 26, 43, 0.2);
+  border-radius: 3px;
+}
+
+.rarity-congrats {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-accent);
+  letter-spacing: 0.5px;
+}
+
+.rarity-value {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.rarity-value strong {
+  color: var(--text-accent);
+  font-weight: 700;
+}
+
+.result-match {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.result-match-value {
+  font-weight: 700;
+  color: var(--text-accent);
+  font-size: 1rem;
+}
+
+/* --- 内容区块 --- */
+.result-section {
+  margin-bottom: 36px;
+}
+
+.result-section h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--card-border);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.result-description {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+.result-description p {
+  margin-bottom: 16px;
+}
+
+.result-description p:last-child {
+  margin-bottom: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --- 维度评分 --- */
+.result-dimensions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dimension-group-header {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  color: var(--text-muted) !important;
+  padding: 12px 0 4px !important;
+  margin-top: 4px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+}
+
+.dimension-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--option-bg);
+  border-radius: 3px;
+  border: 1px solid var(--card-border);
+}
+
+.dimension-name {
+  flex: 0 0 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.dimension-bar-container {
+  flex: 1;
+  height: 4px;
+  background: var(--progress-bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dimension-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.dimension-bar.level-L { width: 25%; background: var(--dim-low); }
+.dimension-bar.level-M { width: 55%; background: var(--dim-mid); }
+.dimension-bar.level-H { width: 90%; background: var(--dim-high); }
+
+.dimension-level {
+  flex: 0 0 24px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.dimension-level.level-L { color: var(--dim-low); }
+.dimension-level.level-M { color: var(--dim-mid); }
+.dimension-level.level-H { color: var(--dim-high); }
+
+.dimension-comment {
+  flex: 0 0 160px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- 免责声明 --- */
+.result-disclaimer {
+  background: var(--option-bg);
+  border-radius: 3px;
+  padding: 20px 24px;
+  border: 1px solid var(--card-border);
+}
+
+.result-disclaimer h3 {
+  border-bottom: none;
+  margin-bottom: 8px;
+  padding-bottom: 0;
+}
+
+.result-disclaimer p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+/* ========================================
+   弹窗广告
+   ======================================== */
+.ad-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.ad-overlay.hidden {
+  display: none;
+}
+
+.ad-modal {
+  background: var(--bg-surface);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 24px;
+  min-width: 320px;
+  max-width: 480px;
+  position: relative;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.ad-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.ad-close:hover {
+  color: var(--text-primary);
+}
+
+.ad-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.ad-slot {
+  background: var(--option-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: 3px;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.ad-placeholder-text {
+  font-size: 0.75rem;
+}
+
+/* ========================================
+   响应式
+   ======================================== */
+@media (max-width: 640px) {
+  :root {
+    --card-padding: 20px;
+    --content-max-width: 100%;
+  }
+
+  .landing-title {
+    font-size: 1.8rem;
+  }
+
+  .landing-card {
+    padding: 48px 24px;
+  }
+
+  .question-card {
+    padding: 18px 16px;
+  }
+
+  .result-card {
+    padding: 28px 20px;
+  }
+
+  .result-code {
+    font-size: 2.4rem;
+  }
+
+  .dimension-comment {
+    display: none;
+  }
+
+  .dimension-name {
+    flex: 0 0 72px;
+    font-size: 0.75rem;
+  }
+
+  .quiz-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .quiz-footer-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .landing-title {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
