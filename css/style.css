@@ -5,7 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap');
 
 /* ---------- Reset & Base ---------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -92,8 +94,15 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ---------- Card ---------- */
@@ -164,7 +173,7 @@ body {
 }
 
 .landing-title {
-  font-family: 'Playfair Display', 'Noto Sans SC', serif;
+  font-family: 'Inter', 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
   font-size: 2.8rem;
   font-weight: 900;
   margin-bottom: 16px;
@@ -182,7 +191,7 @@ body {
   color: var(--text-muted);
   margin-bottom: 48px;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
 }
 
 #btn-start {
@@ -394,10 +403,25 @@ body {
   max-width: 720px;
 }
 
+/* --- 顶部引导语 --- */
+.result-label {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* --- 中文名 + 字母代码 --- */
+.result-title-group {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
 /* --- 人格图片 --- */
 .result-image-container {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .result-image {
@@ -407,7 +431,7 @@ body {
   border: 1px solid var(--card-border);
 }
 
-/* --- 人格标题区 --- */
+/* --- 副标题 + 定位区 --- */
 .result-header {
   text-align: center;
   margin-bottom: 40px;
@@ -415,28 +439,37 @@ body {
   border-bottom: 1px solid var(--card-border);
 }
 
-.result-code {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
+.result-name {
+  font-size: 2.4rem;
   font-weight: 900;
-  color: var(--text-accent);
-  letter-spacing: 8px;
-  margin-bottom: 4px;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  letter-spacing: 4px;
 }
 
-.result-name {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 6px;
+.result-code {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--text-accent);
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+  opacity: 0.85;
 }
 
 .result-subtitle {
-  font-size: 0.95rem;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.result-tagline {
+  font-size: 1.1rem;
   color: var(--text-muted);
   font-weight: 300;
   font-style: italic;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .result-rarity {
@@ -564,9 +597,20 @@ body {
   transition: width 0.6s ease;
 }
 
-.dimension-bar.level-L { width: 25%; background: var(--dim-low); }
-.dimension-bar.level-M { width: 55%; background: var(--dim-mid); }
-.dimension-bar.level-H { width: 90%; background: var(--dim-high); }
+.dimension-bar.level-L {
+  width: 25%;
+  background: var(--dim-low);
+}
+
+.dimension-bar.level-M {
+  width: 55%;
+  background: var(--dim-mid);
+}
+
+.dimension-bar.level-H {
+  width: 90%;
+  background: var(--dim-high);
+}
 
 .dimension-level {
   flex: 0 0 24px;
@@ -576,9 +620,17 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-.dimension-level.level-L { color: var(--dim-low); }
-.dimension-level.level-M { color: var(--dim-mid); }
-.dimension-level.level-H { color: var(--dim-high); }
+.dimension-level.level-L {
+  color: var(--dim-low);
+}
+
+.dimension-level.level-M {
+  color: var(--dim-mid);
+}
+
+.dimension-level.level-H {
+  color: var(--dim-high);
+}
 
 .dimension-comment {
   flex: 0 0 160px;

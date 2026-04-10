@@ -19,10 +19,11 @@ const Result = {
       this.style.display = 'none';
     };
 
-    // 人格代码和名称
-    document.getElementById('result-code').textContent = personality.code;
+    // 人格代码和名称（三明治：中文名 → 字母 → 副标题 → 定位说明）
     document.getElementById('result-name').textContent = personality.name;
-    document.getElementById('result-subtitle').textContent = personality.tagline || personality.subtitle;
+    document.getElementById('result-code').textContent = personality.code;
+    document.getElementById('result-subtitle').textContent = personality.subtitle || '';
+    document.getElementById('result-tagline').textContent = personality.tagline || '';
 
     // 稀有度
     const rarity = personality.rarity || 3.7;

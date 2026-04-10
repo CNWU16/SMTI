@@ -23,7 +23,7 @@
       </button>
       <div class="landing-footer">
         <p>本测试仅供娱乐，请勿当真。</p>
-        <p>托管：Cloudflare (免费) ｜ 域名：待定</p>
+        <p>托管：Cloudflare (免费) ｜ 域名：smti.top</p>
       </div>
     </div>
   </section>
@@ -58,16 +58,24 @@
   <!-- ========== 结果页 ========== -->
   <section id="page-result" class="page">
     <div class="card result-card">
+      <!-- 顶部引导语 -->
+      <p class="result-label">你的SM人格是：</p>
+
+      <!-- 中文名 + 字母代码 -->
+      <div class="result-title-group">
+        <h2 id="result-name" class="result-name">未知人格</h2>
+        <h1 id="result-code" class="result-code">????</h1>
+      </div>
+
       <!-- 人格图片 -->
       <div id="result-image-container" class="result-image-container">
         <img id="result-image" src="" alt="人格图片" class="result-image">
       </div>
 
-      <!-- 人格标题 -->
+      <!-- 副标题 + 定位说明 -->
       <div class="result-header">
-        <h1 id="result-code" class="result-code">????</h1>
-        <h2 id="result-name" class="result-name">未知人格</h2>
         <p id="result-subtitle" class="result-subtitle"></p>
+        <p id="result-tagline" class="result-tagline"></p>
         <div id="result-rarity" class="result-rarity">
           <span class="rarity-congrats">🎊 恭喜解锁稀有人格</span>
           <span class="rarity-value">仅有 <strong id="rarity-percent">?%</strong> 的测试者属于该类型</span>
@@ -79,7 +87,7 @@
 
       <!-- 人格解读 -->
       <div class="result-section">
-        <h3>该人格的简单解读</h3>
+        <h3>你是这样的人 👀</h3>
         <div id="result-description" class="result-description"></div>
       </div>
 
