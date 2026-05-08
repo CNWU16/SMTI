@@ -669,76 +669,18 @@ body {
 }
 
 /* ========================================
-   弹窗广告
+   Banner 广告位（非侵入式）
    ======================================== */
-.ad-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.2s ease;
-}
-
-.ad-overlay.hidden {
-  display: none;
-}
-
-.ad-modal {
-  background: var(--bg-surface);
-  border: 1px solid var(--card-border);
-  border-radius: 4px;
-  padding: 24px;
-  min-width: 320px;
-  max-width: 480px;
-  position: relative;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-}
-
-.ad-close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 22px;
-  cursor: pointer;
-  line-height: 1;
-  transition: color var(--transition-fast);
-}
-
-.ad-close:hover {
-  color: var(--text-primary);
-}
-
-.ad-label {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-
-.ad-slot {
-  background: var(--option-bg);
-  border: 1px dashed var(--card-border);
-  border-radius: 3px;
-  padding: 40px 20px;
+.ad-banner {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 24px auto;
   text-align: center;
-  color: var(--text-muted);
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+  min-height: 0; /* 空状态不占空间 */
 }
 
-.ad-placeholder-text {
-  font-size: 0.75rem;
+.ad-banner:empty {
+  display: none;
 }
 
 /* ========================================

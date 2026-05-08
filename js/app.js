@@ -1,7 +1,7 @@
 /**
  * SMTI 主控制器
  * 
- * 负责：页面路由、全局操作、广告触发
+ * 负责：页面路由、全局操作
  */
 
 // ========== 页面路由 ==========
@@ -46,49 +46,11 @@ function submitQuiz() {
 
   // 切换到结果页
   showPage('page-result');
-
-  // 在查看结果后触发弹窗广告（延迟 2 秒）
-  setTimeout(() => {
-    showAd();
-  }, 2000);
-}
-
-// ========== 广告控制 ==========
-
-function showAd() {
-  const overlay = document.getElementById('ad-overlay');
-  if (overlay) {
-    overlay.classList.remove('hidden');
-  }
-}
-
-function closeAd() {
-  const overlay = document.getElementById('ad-overlay');
-  if (overlay) {
-    overlay.classList.add('hidden');
-  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ========== 初始化 ==========
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 默认显示首页
   showPage('page-landing');
-
-  // 键盘快捷键：ESC 关闭广告
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeAd();
-    }
-  });
-
-  // 点击遮罩关闭广告
-  const adOverlay = document.getElementById('ad-overlay');
-  if (adOverlay) {
-    adOverlay.addEventListener('click', (e) => {
-      if (e.target === adOverlay) {
-        closeAd();
-      }
-    });
-  }
 });
